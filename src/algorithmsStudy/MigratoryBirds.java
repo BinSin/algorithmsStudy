@@ -1,3 +1,8 @@
+/*
+ * Author : BinSin
+ * https://www.hackerrank.com/challenges/migratory-birds
+ */
+
 package algorithmsStudy;
 
 import java.io.BufferedReader;
