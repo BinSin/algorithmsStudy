@@ -1,3 +1,7 @@
+/*
+ * Author : BinSin
+ * https://www.hackerrank.com/challenges/counting-valleys
+ */
 package algorithmsStudy;
 
 import java.io.BufferedReader;
