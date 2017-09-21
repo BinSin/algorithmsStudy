@@ -1,8 +1,3 @@
-/*
- * Author : BinSin
- * https://www.hackerrank.com/challenges/electronics-shop
- */
-
 package algorithmsStudy;
 
 import java.io.BufferedReader;
