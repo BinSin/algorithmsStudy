@@ -1,7 +1,3 @@
-/*
- * Author : BinSin
- */
-
 package homework;
 
 class Actor {
