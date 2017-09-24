@@ -11,6 +11,19 @@ import java.io.InputStreamReader;
 
 public class ClimbingTheLeaderboard {
 	
+	public static void setRank(int[] rank, int[] scores) {
+		int length = rank.length;
+		rank[0] = 1;
+		for(int i=1; i<length; i++) {
+			if(scores[i] < scores[i-1]) {
+				rank[i] = rank[i-1] + 1;
+			}
+			else {
+				rank[i] = rank[i-1];
+			}
+		}
+	}
+	
 	public static int binarySearch(int[] s, int start, int end, int alice) {
 		if(alice<s[end]) return -1;
 		if(alice>=s[start]) return 0;
@@ -73,15 +86,7 @@ public class ClimbingTheLeaderboard {
 		}
 		
 		int[] rank = new int[n];
-		rank[0] = 1;
-		for(int i=1; i<n; i++) {
-			if(scores[i] < scores[i-1]) {
-				rank[i] = rank[i-1] + 1;
-			}
-			else {
-				rank[i] = rank[i-1];
-			}
-		}
+		setRank(rank, scores);
 		
 		int start = 0, end = n - 1;
 		int ind;
