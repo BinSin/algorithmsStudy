@@ -1,3 +1,8 @@
+/*
+ * Author : BinSin
+ * https://www.hackerrank.com/challenges/save-the-prisoner
+ */
+
 package algorithmsStudy2;
 
 import java.io.BufferedReader;
