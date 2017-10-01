@@ -27,6 +27,5 @@ public class SequenceEquation {
 			int y = p_inverse[p_inverse[x]];
 			System.out.println(y);
 		}
-		
 	}
 }
