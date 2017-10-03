@@ -23,11 +23,6 @@ public class AppendAndDelete {
 			}
 		}
 		
-		int append = s.length() - count;
-		int delete = t.length() - count;
-		
-		int result = append + delete;
-		
 //CASE A
         if((s.length()+t.length()-2*count)>k){
             System.out.println("No");
