@@ -1,6 +1,6 @@
 /*
- * Author: BinSin
- * https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited
+ * Author : BinSin
+ * https://www.hackerrank.com/challenges/jumping-on-the-clouds
  */
 
 package algorithmsStudy2;
@@ -11,30 +11,29 @@ import java.io.InputStreamReader;
 
 public class JumpingOnTheClouds {
 
-	public static int remindEnergy(int[] c, int n, int k) {
-		int usingEnergy = 0;
-		for(int i=0; i<n; i+=k) {
-			if(c[i] == 0) usingEnergy++;
-			else usingEnergy+=3;
+	public static int numberOfJumps(int[] c, int n) {
+		int count = 0;
+		int location = 0;
+		while(location < n-1) {
+			count++;
+			if(c[location+2] == 1)
+				location++;
+			else {
+				location += 2;
+			}
 		}
-		return 100 - usingEnergy;
+		return count;
 	}
-	
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
 		String str = br.readLine();
 		String[] s = str.split("\\s+");
-		int n = Integer.parseInt(s[0]);
-		int k = Integer.parseInt(s[1]);
-		
-		int[]c = new int[n];
-		String str2 = br.readLine();
-		String[] s2 = str2.split("\\s+");
+		int[] clouds = new int[n+2];
 		for(int i=0; i<n; i++) {
-			c[i] = Integer.parseInt(s2[i]);
+			clouds[i] = Integer.parseInt(s[i]);
 		}
-		
-		System.out.println(remindEnergy(c, n, k));
+		System.out.println(numberOfJumps(clouds, n));
 	}
 }
