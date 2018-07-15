@@ -13,15 +13,15 @@ public class LarrysArray {
 
 	public static void rotate(int[] A, int n) {
 		int temp = A[n];
-		for(int i=n; i<n+3; i++) {
+		for(int i=n; i<n+2; i++) {
 			A[i] = A[i+1];
 		}
 		A[n+2] = temp;
 	}
 	
-	public static boolean check(int[] a) {
-		for(int i=0; i<a.length-1; i++) {
-			if(a[i+1] != a[i]+1) {
+	public static boolean check(int[] A) {
+		for(int i=0; i<A.length-1; i++) {
+			if(A[i+1] != A[i]+1) {
 				return false;
 			}
 		}
@@ -30,36 +30,36 @@ public class LarrysArray {
 	
 	public static int location(int[] A, int n) {
 		for(int i=n-1; i<A.length; i++) {
-			if(i == n-1)
+			if(A[i] == n) {
 				return i;
+			}
 		}
+		return A.length;
+	}
 	
-	public static boolean larrysArray(int[] A, int n) {
+	public static void larrysArray(int[] A, int n) {
 		
 		for(int i=0; i<n-2; i++) {
-			int num = 0;
-			for(int j=i; j<n; j++) {
-				if(A[j] == i+1) {
-					num = j;
-					break;
-				}
+			int l = location(A, i+1);
+			while(l > i+2) {
+				rotate(A, l-2);
+				l--;
 			}
-			
-		}
-		
-			
-			int[] a = new int[3];
-			for(int j=0; j<3; i++) {
-				a[j] = A[j];
+			if(l == i+2) {
+				rotate(A, l-2);
+				l--;
 			}
-			if(check(a))
-				
-			if(A[i] != i+1) {
-				
+			if(l == i+1) {
+				rotate(A, l-1);
+				l--;
 			}
 		}
-		
-		return true;
+		if(check(A)) {
+			System.out.println("YES");
+		}
+		else {
+			System.out.println("NO");
+		}
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -77,7 +77,9 @@ public class LarrysArray {
 				A[i] = Integer.parseInt(str[i]);
 			}
 			
-			System.out.println(larrysArray(A, n));
+			larrysArray(A, n);
 		}
+		
+		br.close();
 	}
 }
