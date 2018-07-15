@@ -11,8 +11,6 @@ public class ThreeDSurfaceArea {
 	static int surfaceArea(int[][] A, int H, int W) {
 		int sum = 0;
 		
-		Queue<Integer> queue = new LinkedList<Integer>();
-		
 		for(int i=0; i<H; i++) {
 			int max = A[i][0];
 			int min = A[i][0];
