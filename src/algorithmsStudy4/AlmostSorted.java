@@ -8,8 +8,6 @@ package algorithmsStudy4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class AlmostSorted {
@@ -30,7 +28,7 @@ public class AlmostSorted {
 	}
 	
 	public static boolean isSort(int[] A, int n) {
-		for(int i=0; i<n; i++) {
+		for(int i=0; i<n-1; i++) {
 			if(A[i] > A[i+1]) {
 				return false;
 			}
@@ -39,8 +37,32 @@ public class AlmostSorted {
 	}
 	
 	public static void almostSorted(int[] A, int n) {
+		if(isSort(A, n)) {
+			System.out.println("yes");
+			return;
+		}
 		
+		int i, j;
+		for(i=0; i<n-1 && A[i] < A[i+1]; i++);
+		for(j=n-1; j>0 && A[j-1] < A[j]; j--);
 		
+		swap(A, i, j);
+		
+		if(isSort(A, n)) {
+			System.out.println("yes");
+			System.out.println("swap " + (i+1) + " " + (j+1));
+			return;
+		}
+		
+		reverse(A, i+1, j-1);
+		
+		if(isSort(A, n)) {
+			System.out.println("yes");
+			System.out.println("reverse " + (i+1) + " " + (j+1));
+		}
+		else {
+			System.out.println("no");
+		}
 		
 	}
 	
