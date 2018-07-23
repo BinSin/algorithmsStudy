@@ -36,15 +36,6 @@ public class MatrixLayerRotation {
 		return t;
 	}
 	
-	public static int lcm(int m, int n) {
-		int deep = Math.min(m, n) / 2;
-		int sum = 1;
-		while(deep-->0) {
-			sum *= (m*2 + (n-2)*2);
-		}
-		return sum;
-	}
-	
 	public static void printMatrix(int[][] matrix, int m, int n) {
 		for(int i=0; i<m; i++) {
 			for(int j=0; j<n; j++) {
@@ -54,42 +45,42 @@ public class MatrixLayerRotation {
 		}
 	}
 	
-	public static void rotate(int[][] matrix, int m, int n) {
+	public static void matrixRotation(int[][] matrix, int m, int n, int r) {
 		int min = 0;
 		int mmax = m-1, nmax = n-1;
+		int repeat = r % ((m*2) + (n-2)*2);
+		int minus = 0;
 		
 		int deep = Math.min(m, n) / 2;
 		
 		while(deep-->0) {
-			int tmp = matrix[min][min];
 			int ne = min, me = min;
-			while(me < mmax) {
-				tmp = down(matrix, me, ne, tmp);
-				me++;
-			}
-			while(ne < nmax) {
-				tmp = right(matrix, me, ne, tmp);
-				ne++;
-			}
-			while(me > min) {
-				tmp = up(matrix, me, ne, tmp);
-				me--;
-			}
-			while(ne > min) {
-				tmp = left(matrix, me, ne, tmp);
-				ne--;
+			repeat = r % (((m-minus) + (n-(minus+2))) * 2);
+			
+			for(int i=0; i<repeat; i++) {
+				int tmp = matrix[min][min];
+				while(me < mmax) {
+					tmp = down(matrix, me, ne, tmp);
+					me++;
+				}
+				while(ne < nmax) {
+					tmp = right(matrix, me, ne, tmp);
+					ne++;
+				}
+				while(me > min) {
+					tmp = up(matrix, me, ne, tmp);
+					me--;
+				}
+				while(ne > min) {
+					tmp = left(matrix, me, ne, tmp);
+					ne--;
+				}
 			}
 			min++;
 			mmax--;
 			nmax--;
+			minus+=2;
 		}
-	}
-	
-	public static void matrixRotation(int[][] matrix, int m, int n, int r) {
-		int repeat = r % lcm(m, n);
-				
-		while(repeat-->0)
-			rotate(matrix, m, n);
 		
 		printMatrix(matrix, m, n);
 	}
