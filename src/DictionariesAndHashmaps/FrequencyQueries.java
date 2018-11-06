@@ -1,12 +1,14 @@
+/*
+ * Author : BinSin
+ * https://www.hackerrank.com/challenges/frequency-queries/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
+ */
+
 package DictionariesAndHashmaps;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class FrequencyQueries {
@@ -38,16 +40,16 @@ public class FrequencyQueries {
         		freq[count+1]--;
     }
     
-    private static void checkFreq(LinkedList<Integer> ans, int[] freq, int data) {
+    private static void checkFreq(StringBuilder ans, int[] freq, int data) {
     	if(freq.length < data) {
-    		ans.add(0);
+    		ans.append(0).append("\n");
     		return;
     	}
-    	
+
     	if(freq[data] > 0)
-    		ans.add(1);
+    		ans.append(1).append("\n");
         else
-        	ans.add(0);
+        	ans.append(0).append("\n");
     }
 
     public static void main(String[] args) throws IOException {
@@ -55,7 +57,7 @@ public class FrequencyQueries {
         int q = Integer.parseInt(br.readLine());
         HashMap<Integer, Integer> queries = new HashMap<Integer, Integer>();
         int[] freq = new int[q+1];
-        LinkedList<Integer> ans = new LinkedList<Integer>();
+        StringBuilder ans = new StringBuilder();
         
         while(q-->0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -69,10 +71,7 @@ public class FrequencyQueries {
             }
         }
         
-        Iterator<Integer> iter = ans.iterator();
-        while(iter.hasNext()) {
-        	System.out.println(iter.next());
-        }
+        System.out.println(ans);
         
     }
 }
